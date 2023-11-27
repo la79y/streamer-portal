@@ -1,5 +1,13 @@
-export function StreamCreationFormPagePath() {
+export function LoginPagePath() {
   return `/`;
+}
+
+export function SignupPagePath() {
+  return `/signup`;
+}
+
+export function StreamCreationFormPagePath() {
+  return `/stream`;
 }
 
 export function StreamDetailsPagePath() {

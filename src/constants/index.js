@@ -3,12 +3,24 @@ export const languages = {
   AR: "ar",
 };
 
-export const streamCreationInitialValues = {
-  mode: "",
-  streamerName: "",
-  srtMode: "",
-  streamingLocation: "",
+export const loginInitialValues = {
   username: "",
+  password: "",
+};
+
+export const signupInitialValues = {
+  username: "",
+  email: "",
+  password: "",
+};
+
+export const streamCreationInitialValues = {
+  streamTitle: "",
+  streamResource: "",
+  streamMode: "",
+  streamerLocation: "",
+  streamSrtMode: "",
+  userId: localStorage.getItem("userId"),
 };
 
 export const countries = [
@@ -21,10 +33,6 @@ export const countries = [
   "Saudi Arabia",
 ];
 
-export const srtModes = ["Caller", "Listener", "Rendezvous"];
+export const modes = ["Publish", "Play", "Record"];
 
-export const streamDataExample = {
-  srtLink: `srt://34.18.0.215:10080?streamid=#!::r=livestream3,m=publish,t=stream&transtype=live&mode=caller&latency=3200000`,
-  ffplayCommand: `ffplay -i srt://34.18.0.215:10080?streamid=#!::r=livestream3,m=publish,t=stream&transtype=live&mode=caller&latency=3200000`,
-  hlsLink: `http://livestream3.m3u8`,
-};
+export const srtModes = ["Caller", "Listener", "Rendezvous"];

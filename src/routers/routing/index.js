@@ -1,12 +1,21 @@
 import React, { Suspense } from "react";
-import { StreamCreationFormPagePath, StreamDetailsPagePath } from "../paths";
+import {
+  LoginPagePath,
+  SignupPagePath,
+  StreamCreationFormPagePath,
+  StreamDetailsPagePath,
+} from "../paths";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const StreamCreationForm = React.lazy(() =>
+const LoginPage = React.lazy(() => import("../../components/pages/Login"));
+
+const SignupPage = React.lazy(() => import("../../components/pages/Signup"));
+
+const StreamCreationFormPage = React.lazy(() =>
   import("../../components/pages/StreamCreationForm")
 );
 
-const StreamDetails = React.lazy(() =>
+const StreamDetailsPage = React.lazy(() =>
   import("../../components/pages/StreamDetails")
 );
 
@@ -30,14 +39,24 @@ export default function Routing() {
       <BrowserRouter>
         <Routes>
           <Route
-            key="VerifyPage"
-            path={StreamCreationFormPagePath()}
-            element={withSuspenseComponents(<StreamCreationForm />)}
+            key="LoginPage"
+            path={LoginPagePath()}
+            element={withSuspenseComponents(<LoginPage />)}
           />
           <Route
-            key="ConfirmPage"
+            key="SignupPage"
+            path={SignupPagePath()}
+            element={withSuspenseComponents(<SignupPage />)}
+          />
+          <Route
+            key="StreamCreationPage"
+            path={StreamCreationFormPagePath()}
+            element={withSuspenseComponents(<StreamCreationFormPage />)}
+          />
+          <Route
+            key="StreamDetailsPage"
             path={StreamDetailsPagePath()}
-            element={withSuspenseComponents(<StreamDetails />)}
+            element={withSuspenseComponents(<StreamDetailsPage />)}
           />
         </Routes>
       </BrowserRouter>
