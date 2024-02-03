@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SignupDesign from "../../assets/images/signup-design.svg";
 import { LoginPagePath } from "../../routers/paths";
@@ -8,6 +8,8 @@ import { signupValidationSchema } from "../../utils/validation/signupValidationS
 import { signupUser } from "../../services/apis";
 
 export default function Signup() {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: signupInitialValues,
     validationSchema: signupValidationSchema,
@@ -15,8 +17,9 @@ export default function Signup() {
       try {
         await signupUser(values);
         toast.success("Signup successful!");
-      } catch (error) {
-        toast.error("Signup failed");
+        navigate(LoginPagePath())
+      } catch (err) {
+        toast.error(err.response.data.error || "Signup faild");
       }
     },
   });

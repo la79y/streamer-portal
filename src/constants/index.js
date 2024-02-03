@@ -33,6 +33,6 @@ export const countries = [
   "Saudi Arabia",
 ];
 
-export const modes = ["Publish", "Play", "Record"];
+export const modes = ["publish", "play", "record"];
 
-export const srtModes = ["Caller", "Listener", "Rendezvous"];
+export const srtModes = ["caller", "listener", "rendezvous"];

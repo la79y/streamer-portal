@@ -19,10 +19,10 @@ export default function StreamCreationForm() {
     validationSchema: streamCreationValidationSchema,
     onSubmit: async (values) => {
       try {
-        const data = await createStream(values);
-        navigate(StreamDetailsPagePath(), { state: data.stream });
-      } catch (error) {
-        toast.error("Please check your input.");
+        const response = await createStream(values);
+        navigate(StreamDetailsPagePath(), { state: response.data });
+      } catch (err) {
+        toast.error(err.response.data.error || "Stream creation faild");
       }
     },
   });
