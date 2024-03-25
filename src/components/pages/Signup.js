@@ -15,9 +15,9 @@ export default function Signup() {
     validationSchema: signupValidationSchema,
     onSubmit: async (values) => {
       try {
-        await signupUser(values);
-        toast.success("Signup successful!");
-        navigate(LoginPagePath())
+        const response = await signupUser(values);
+        toast.success(response.message);
+        navigate(LoginPagePath());
       } catch (err) {
         toast.error(err.response.data.error || "Signup faild");
       }

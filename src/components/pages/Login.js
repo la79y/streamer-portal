@@ -22,8 +22,8 @@ export default function Login() {
         const decoded = jwtDecode(data.token);
         localStorage.setItem("userId", decoded.userId);
         window.location.href = StreamCreationFormPagePath();
-      } catch (error) {
-        toast.error("Login failed. Please check your credentials.");
+      } catch (err) {
+        toast.error(err.response.data.error);
       }
     },
   });

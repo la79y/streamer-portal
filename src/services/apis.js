@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:8080";
 
 export const loginUser = async (values) => {
   try {
@@ -14,7 +14,8 @@ export const loginUser = async (values) => {
 
 export const signupUser = async (values) => {
   try {
-    await axios.post(`${API_URL}/signup`, values);
+    const response = await axios.post(`${API_URL}/signup`, values);
+    return response.data;
   } catch (error) {
     console.error("Error during signup:", error);
     throw error;
@@ -33,6 +34,18 @@ export const createStream = async (values) => {
     return response.data;
   } catch (error) {
     console.error("Error during stream creation:", error);
+    throw error;
+  }
+};
+
+export const verifyEmail = async (email, token) => {
+  try {
+    const response = await axios.patch(
+      `${API_URL}/verify?email=${email}&token=${token}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error during verifying email:", error);
     throw error;
   }
 };

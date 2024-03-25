@@ -13,3 +13,7 @@ export function StreamCreationFormPagePath() {
 export function StreamDetailsPagePath() {
   return `/streamDetails`;
 }
+
+export function EmailVerificationPagePath() {
+  return `/verify`;
+}
