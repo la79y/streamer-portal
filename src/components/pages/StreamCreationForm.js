@@ -1,12 +1,7 @@
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { StreamDetailsPagePath } from "../../routers/paths";
-import {
-  countries,
-  modes,
-  srtModes,
-  streamCreationInitialValues,
-} from "../../constants";
+import { countries, modes, streamCreationInitialValues } from "../../constants";
 import { streamCreationValidationSchema } from "../../utils/validation/streamCreationValidationSchema";
 import { createStream } from "../../services/apis";
 import { toast } from "react-toastify";
@@ -45,10 +40,11 @@ export default function StreamCreationForm() {
             id="streamTitle"
             name="streamTitle"
             type="text"
+            placeholder="Enter stream title"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.streamTitle}
-            className="shadow border rounded py-2 px-3 block w-full focus:ring"
+            className="shadow border rounded py-2 px-3 block w-full focus:ring placeholder:text-black"
           />
           {formik.touched.streamTitle && formik.errors.streamTitle ? (
             <div className="text-red-500 text-xs italic">
@@ -69,10 +65,11 @@ export default function StreamCreationForm() {
             id="streamResource"
             name="streamResource"
             type="text"
+            placeholder="Enter stream resource"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.streamResource}
-            className="shadow border rounded py-2 px-3 block w-full focus:ring"
+            className="shadow border rounded py-2 px-3 block w-full focus:ring placeholder:text-black"
           />
           {formik.touched.streamResource && formik.errors.streamResource ? (
             <div className="text-red-500 text-xs italic">
@@ -135,36 +132,6 @@ export default function StreamCreationForm() {
           {formik.touched.streamerLocation && formik.errors.streamerLocation ? (
             <div className="text-red-500 text-xs italic">
               {formik.errors.streamerLocation}
-            </div>
-          ) : null}
-        </div>
-
-        {/* SRT Mode Selector */}
-        <div className="mb-4">
-          <label
-            htmlFor="streamSrtMode"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            SRT Mode
-          </label>
-          <select
-            id="streamSrtMode"
-            name="streamSrtMode"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.streamSrtMode}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          >
-            <option value="">Select SRT Mode</option>
-            {srtModes.map((mode) => (
-              <option key={mode} value={mode}>
-                {mode}
-              </option>
-            ))}
-          </select>
-          {formik.touched.streamSrtMode && formik.errors.streamSrtMode ? (
-            <div className="text-red-500 text-xs italic">
-              {formik.errors.streamSrtMode}
             </div>
           ) : null}
         </div>

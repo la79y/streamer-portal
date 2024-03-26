@@ -19,7 +19,6 @@ export const streamCreationInitialValues = {
   streamResource: "",
   streamMode: "",
   streamerLocation: "",
-  streamSrtMode: "",
   userId: localStorage.getItem("userId"),
 };
 
@@ -34,5 +33,3 @@ export const countries = [
 ];
 
 export const modes = ["publish", "play", "record"];
-
-export const srtModes = ["caller", "listener", "rendezvous"];
