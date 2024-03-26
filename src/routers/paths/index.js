@@ -17,3 +17,7 @@ export function StreamDetailsPagePath() {
 export function EmailVerificationPagePath() {
   return `/verify`;
 }
+
+export function ResetPasswordPagePath() {
+  return `/reset-password`;
+}

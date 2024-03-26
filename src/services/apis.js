@@ -49,3 +49,27 @@ export const verifyEmail = async (email, token) => {
     throw error;
   }
 };
+
+export const resetPasswordRequest = async (email) => {
+  try {
+    const response = await axios.post(`${API_URL}/reset-password-request`, {
+      email,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error during request changing password:", error);
+    throw error;
+  }
+};
+
+export const resetPassword = async (email, token, newPassword) => {
+  try {
+    const response = await axios.patch(
+      `${API_URL}/reset-password?email=${email}&token=${token}&newPassword=${newPassword}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error during changing password:", error);
+    throw error;
+  }
+};

@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import {
   EmailVerificationPagePath,
   LoginPagePath,
+  ResetPasswordPagePath,
   SignupPagePath,
   StreamCreationFormPagePath,
   StreamDetailsPagePath,
@@ -22,6 +23,10 @@ const StreamDetailsPage = React.lazy(() =>
 
 const EmailVerificationPage = React.lazy(() =>
   import("../../components/pages/EmailVerification")
+);
+
+const ResetPasswordPage = React.lazy(() =>
+  import("../../components/pages/ResetPassword")
 );
 
 const withSuspense = (WrappedComponent) => {
@@ -67,6 +72,11 @@ export default function Routing() {
             key="EmailVerificationPage"
             path={EmailVerificationPagePath()}
             element={withSuspenseComponents(<EmailVerificationPage />)}
+          />
+          <Route
+            key="ResetPasswordPage"
+            path={ResetPasswordPagePath()}
+            element={withSuspenseComponents(<ResetPasswordPage />)}
           />
         </Routes>
       </BrowserRouter>
