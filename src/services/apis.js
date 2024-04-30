@@ -38,7 +38,7 @@ export const createStream = async (values) => {
   }
 };
 
-export const getStream = async () => {
+export const getStreamsList = async () => {
   try {
     const token = localStorage.getItem("token");
     const config = {

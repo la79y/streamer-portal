@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { getStream } from "../../services/apis";
+import { getStreamsList } from "../../services/apis";
 import { useEffect } from "react";
+import DetailRow from "../DetailRow";
 
 const StreamDetails = () => {
   const [list, setList] = useState([]);
@@ -14,7 +15,7 @@ const StreamDetails = () => {
 
   const fetchData = async () => {
     try {
-      const response = await getStream();
+      const response = await getStreamsList();
       setList(response.data);
     } catch (error) {
       console.error("Failed to fetch stream:", error);
@@ -37,8 +38,11 @@ const StreamDetails = () => {
         Refresh Sessions ID
       </button>
       {list.length ? (
-        list.map((listItem) => (
-          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-10">
+        list.map((listItem, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-10"
+          >
             <DetailRow
               title={`Streamer URL for ${listItem.name}`}
               value={listItem.streamerUrl}
@@ -51,23 +55,6 @@ const StreamDetails = () => {
           <p>Streamer has no streams yet</p>
         </div>
       )}
-    </div>
-  );
-};
-
-const DetailRow = ({ title, value, onCopy }) => {
-  return (
-    <div className="mb-4 flex justify-between items-center">
-      <div>
-        <strong className="text-lg">{title}:</strong>
-        <p className="text-gray-600">{value}</p>
-      </div>
-      <button
-        onClick={onCopy}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center"
-      >
-        Copy
-      </button>
     </div>
   );
 };
