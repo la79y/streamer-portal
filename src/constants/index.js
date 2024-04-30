@@ -17,7 +17,8 @@ export const signupInitialValues = {
 export const streamCreationInitialValues = {
   streamTitle: "",
   streamResource: "",
-  streamMode: "",
+  streamMode: "publish",
+  streamRole: "caller",
   streamerLocation: "",
   userId: localStorage.getItem("userId"),
 };
@@ -33,3 +34,5 @@ export const countries = [
 ];
 
 export const modes = ["publish", "play", "record"];
+
+export const roles = ["caller", "listener"];

@@ -8,6 +8,5 @@ export const streamCreationValidationSchema = Yup.object({
       "Stream Resource must only contain letters and numbers"
     )
     .required("Required"),
-  streamMode: Yup.string().required("Required"),
   streamerLocation: Yup.string().required("Required"),
 });

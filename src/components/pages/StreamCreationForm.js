@@ -1,7 +1,12 @@
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { StreamDetailsPagePath } from "../../routers/paths";
-import { countries, modes, streamCreationInitialValues } from "../../constants";
+import {
+  countries,
+  modes,
+  roles,
+  streamCreationInitialValues,
+} from "../../constants";
 import { streamCreationValidationSchema } from "../../utils/validation/streamCreationValidationSchema";
 import { createStream } from "../../services/apis";
 import { toast } from "react-toastify";
@@ -87,11 +92,13 @@ export default function StreamCreationForm() {
             Mode
           </label>
           <select
+            disabled
             id="streamMode"
             name="streamMode"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.mode}
+            defaultValue={modes[0]}
             className="shadow border rounded py-2 px-3 form-select block w-full focus:ring"
           >
             <option value="" label="Select a mode" />
@@ -105,7 +112,35 @@ export default function StreamCreationForm() {
             </div>
           ) : null}
         </div>
-
+        {/* Mode Selector */}
+        <div className="mb-4">
+          <label
+            htmlFor="streamMode"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Role
+          </label>
+          <select
+            disabled
+            id="streamRole"
+            name="streamRole"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.role}
+            defaultValue={roles[0]}
+            className="shadow border rounded py-2 px-3 form-select block w-full focus:ring"
+          >
+            <option value="" label="Select a role" />
+            {roles.map((role, index) => (
+              <option key={index} value={role} label={role} />
+            ))}
+          </select>
+          {formik.touched.streamMode && formik.errors.streamMode ? (
+            <div className="text-red-500 text-xs italic">
+              {formik.errors.streamMode}
+            </div>
+          ) : null}
+        </div>
         {/* Streaming Location Selector */}
         <div className="mb-4">
           <label

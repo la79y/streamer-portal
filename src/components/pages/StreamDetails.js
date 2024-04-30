@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 
 const StreamDetails = () => {
   const location = useLocation();
-  const { streamerUrl, playerUrl, ffplay } = location.state || {};
+  const { name, streamerUrl } = location.state || {};
 
   // Helper function to copy content to clipboard
   const copyToClipboard = (text) => {
@@ -19,19 +19,9 @@ const StreamDetails = () => {
 
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <DetailRow
-          title="Streamer URL"
+          title={`${name} Streamer URL`}
           value={streamerUrl}
           onCopy={() => copyToClipboard(streamerUrl)}
-        />
-        <DetailRow
-          title="Player URL"
-          value={playerUrl}
-          onCopy={() => copyToClipboard(playerUrl)}
-        />
-        <DetailRow
-          title="ffplay Command"
-          value={ffplay}
-          onCopy={() => copyToClipboard(ffplay)}
         />
       </div>
     </div>
