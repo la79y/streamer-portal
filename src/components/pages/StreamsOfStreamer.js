@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getStreamsList } from "../../services/apis";
+import { getStreams, getStreamsList } from "../../services/apis";
 import { useEffect } from "react";
 import DetailRow from "../DetailRow";
 
@@ -17,6 +17,8 @@ const StreamDetails = () => {
     try {
       const response = await getStreamsList();
       setList(response.data);
+      const data = await getStreams();
+      console.log(data.data[data.data.length - 1].ffplay);
     } catch (error) {
       console.error("Failed to fetch stream:", error);
     }

@@ -18,7 +18,6 @@ export const streamCreationInitialValues = {
   streamTitle: "",
   streamResource: "",
   streamMode: "publish",
-  streamRole: "caller",
   streamerLocation: "",
   userId: localStorage.getItem("userId"),
 };

@@ -122,11 +122,6 @@ export default function StreamCreationForm() {
           </label>
           <select
             disabled
-            id="streamRole"
-            name="streamRole"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.role}
             defaultValue={roles[0]}
             className="shadow border rounded py-2 px-3 form-select block w-full focus:ring"
           >
@@ -135,11 +130,6 @@ export default function StreamCreationForm() {
               <option key={index} value={role} label={role} />
             ))}
           </select>
-          {formik.touched.streamMode && formik.errors.streamMode ? (
-            <div className="text-red-500 text-xs italic">
-              {formik.errors.streamMode}
-            </div>
-          ) : null}
         </div>
         {/* Streaming Location Selector */}
         <div className="mb-4">

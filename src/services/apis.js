@@ -54,6 +54,22 @@ export const getStreamsList = async () => {
   }
 };
 
+export const getStreams = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await axios.get(`${API_URL}/stream`, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error during fetching streams:", error);
+    throw error;
+  }
+};
+
 export const verifyEmail = async (email, token) => {
   try {
     const response = await axios.patch(
