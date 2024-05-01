@@ -16,10 +16,7 @@ export const signupInitialValues = {
 
 export const streamCreationInitialValues = {
   streamTitle: "",
-  streamResource: "",
-  streamMode: "publish",
   streamerLocation: "",
-  userId: localStorage.getItem("userId"),
 };
 
 export const countries = [
