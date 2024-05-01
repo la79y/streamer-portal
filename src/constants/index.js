@@ -28,7 +28,3 @@ export const countries = [
   "Japan",
   "Saudi Arabia",
 ];
-
-export const modes = ["publish", "play", "record"];
-
-export const roles = ["caller", "listener"];

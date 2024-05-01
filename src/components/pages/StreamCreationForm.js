@@ -1,12 +1,7 @@
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { StreamDetailsPagePath } from "../../routers/paths";
-import {
-  countries,
-  modes,
-  roles,
-  streamCreationInitialValues,
-} from "../../constants";
+import { countries, streamCreationInitialValues } from "../../constants";
 import { streamCreationValidationSchema } from "../../utils/validation/streamCreationValidationSchema";
 import { createStream } from "../../services/apis";
 import { toast } from "react-toastify";
