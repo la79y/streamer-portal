@@ -5,6 +5,7 @@ import DetailRow from "../DetailRow";
 
 const StreamDetails = () => {
   const [list, setList] = useState([]);
+  const [message, setMessage] = useState("loading...");
 
   // Helper function to copy content to clipboard
   const copyToClipboard = (text) => {
@@ -17,6 +18,11 @@ const StreamDetails = () => {
     try {
       const response = await getStreamsList();
       setList(response.data);
+      if (!response.data.length) {
+        setMessage("Streamer has no streams yet");
+      } else {
+        setMessage("");
+      }
     } catch (error) {
       console.error("Failed to fetch stream:", error);
     }
@@ -37,24 +43,19 @@ const StreamDetails = () => {
       >
         Refresh Sessions ID
       </button>
-      {list.length ? (
-        list.map((listItem, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-10"
-          >
-            <DetailRow
-              title={`Streamer URL for ${listItem.name}`}
-              value={listItem.streamerUrl}
-              onCopy={() => copyToClipboard(listItem.streamerUrl)}
-            />
-          </div>
-        ))
-      ) : (
-        <div className="flex bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <p>Streamer has no streams yet</p>
+      <p>{message}</p>
+      {list.map((listItem, index) => (
+        <div
+          key={index}
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-10"
+        >
+          <DetailRow
+            title={`Streamer URL for ${listItem.name}`}
+            value={listItem.streamerUrl}
+            onCopy={() => copyToClipboard(listItem.streamerUrl)}
+          />
         </div>
-      )}
+      ))}
     </div>
   );
 };
